@@ -35,20 +35,20 @@ const listSchema = {
 
 const List = new mongoose.model("List", listSchema);
 
-app.get("/", function(req, res){
-  Item.find({}, (err, items) => {
-      if(items.length === 0){
-        Item.insertMany(defaultItems, (err) => {
-          if(err)
-            console.log(err);
-          else{
-            console.log("Inserted elements successfuly");
-          }
-        });
-        res.redirect("/");
-      }else{
-        res.render("list", { listTitle: "Today", listItems: items });
-      }
+app.get("/", async function(req, res){
+  await Item.find({}, (err, items) => {
+        if(items.length === 0){
+          Item.insertMany(defaultItems, (err) => {
+            if(err)
+              console.log(err);
+            else{
+              console.log("Inserted elements successfuly");
+            }
+          });
+          res.redirect("/");
+        }else{
+          res.render("list", { listTitle: "Today", listItems: items });
+        }
   });
 });
 
