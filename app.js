@@ -117,5 +117,5 @@ app.get("/about", function(req, res){
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function(){
-  console.log("Listening on port 3000...");
+  console.log("Listening on port "+PORT+"...");
 });
